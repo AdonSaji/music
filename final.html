@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Favorite Songs</title>
+  <style>
+    body {
+      background-color: #f4f4f4;
+      color: #333;
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .input-area {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px 0 0 4px;
+    }
+
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #fff;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    li button {
+      background: none;
+      border: none;
+      color: #c00;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    li button:hover {
+      color: #900;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My Favorite Songs</h1>
+
+  <div class="input-area">
+    <input type="text" id="songInput" placeholder="Type a song title" />
+    <button onclick="addSong()">Add</button>
+  </div>
+
+  <ul id="songList"></ul>
+
+  <script>
+    function addSong() {
+      const input = document.getElementById('songInput');
+      const song = input.value.trim();
+
+      if (!song) {
+        alert('Please enter a song title');
+        return;
+      }
+
+      const list = document.getElementById('songList');
+      const li = document.createElement('li');
+      li.textContent = song;
+
+      const removeBtn = document.createElement('button');
+      removeBtn.textContent = '×';
+      removeBtn.onclick = () => list.removeChild(li);
+
+      li.appendChild(removeBtn);
+      list.appendChild(li);
+
+      input.value = '';
+      input.focus();
+    }
+  </script>
+
+</body>
+</html>
